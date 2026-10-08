@@ -13,6 +13,7 @@ import {
   Portal,
 } from "@chakra-ui/react";
 import { Button } from "../ui/button";
+import { FiX } from "react-icons/fi";
 
 interface FormModalProps {
   isOpen: boolean;
@@ -61,7 +62,6 @@ export const FormModal: React.FC<FormModalProps> = ({
     <DialogRoot
       open={isOpen}
       onOpenChange={(e: { open: boolean }) => !e.open && onClose()}
-      closeOnInteractOutside={false}
       size={rootSize}
       scrollBehavior="inside"
     >
@@ -72,7 +72,23 @@ export const FormModal: React.FC<FormModalProps> = ({
             <DialogHeader>
               <DialogTitle>{title}</DialogTitle>
             </DialogHeader>
-            <DialogCloseTrigger />
+            <DialogCloseTrigger
+              aria-label="Close dialog"
+              css={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxSize: "8",
+                color: "fg.muted",
+                borderRadius: "md",
+                _hover: {
+                  bg: "bg.emphasized",
+                  color: "fg",
+                },
+              }}
+            >
+              <FiX />
+            </DialogCloseTrigger>
 
             <DialogBody>{children}</DialogBody>
 
