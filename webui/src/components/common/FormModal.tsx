@@ -21,6 +21,7 @@ interface FormModalProps {
   title: string;
   children: React.ReactNode;
   footer?: React.ReactNode;
+  closeOnInteractOutside?: boolean;
   size?:
     | "xs"
     | "sm"
@@ -43,6 +44,7 @@ export const FormModal: React.FC<FormModalProps> = ({
   title,
   children,
   footer,
+  closeOnInteractOutside = false,
   size = "default",
 }) => {
   // Map size "default" to "md" and "large" to "xl" or "2xl"
@@ -62,6 +64,7 @@ export const FormModal: React.FC<FormModalProps> = ({
     <DialogRoot
       open={isOpen}
       onOpenChange={(e: { open: boolean }) => !e.open && onClose()}
+      closeOnInteractOutside={closeOnInteractOutside}
       size={rootSize}
       scrollBehavior="inside"
     >
